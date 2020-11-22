@@ -16,7 +16,7 @@ jobs:
       - name: Login to container registry
         env: 
          PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
-        run: docker login ghcr.io -u aloisreitbauer --password $PUSH_TOKEN          
+        run: echo $PUSH_TOKEN | docker login ghcr.io -u USERNAME --password-stdin       
       - uses: actions/checkout@v2
       - name: Build the Docker image
         run:  chmod +x ./buildPush.sh && ./buildPush.sh
